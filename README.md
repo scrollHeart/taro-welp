@@ -33,9 +33,13 @@
 ----- src
 
 --------- assets                  ---------- 静态文件
+
 ---------------fonts              ---------- iconfont文件
+
 ---------------icons              ---------- icon图标图片文件
+
 ---------------images             ---------- 图片文件
+
 ---------------styles             ---------- 公共样式文件
 
 --------- common                  ---------- 公共ts文件
@@ -81,7 +85,7 @@
 taro init myApp
 ```
 
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/505ed3ea9b024ce88325565409517c7f~tplv-k3u1fbpfcp-watermark.image?)
+
 
 安装 cli 用来执行构建等操作，之后启动项目，会生成一个 dist 目录
 

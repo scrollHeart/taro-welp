@@ -1,0 +1,33 @@
+{
+  "miniprogramRoot": "dist/",
+  "projectname": "taro-my-app",
+  "description": "taro vue3",
+  "appid": "wx8616dc7daf1045f2",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "enhance": false,
+    "compileHotReLoad": false,
+    "postcss": true,
+    "minified": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "ignoreUploadUnusedFiles": true,
+    "minifyWXML": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.26.0",
+  "srcMiniprogramRoot": "dist/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

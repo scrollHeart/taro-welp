@@ -1,0 +1,20 @@
+.index {
+    padding: 20px;
+    h1 {
+        margin: 10px;
+    }
+    ul {
+        display: inline-flex;
+        width: 100%;
+        justify-content: space-around;
+        color: #999;
+        text-align: center;
+        div {
+            text-align: center;
+        }
+    }
+    .bar-chart {
+    width: 300px;
+    height: 100px;
+    }
+}
