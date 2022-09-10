@@ -1,0 +1,94 @@
+.action-wrap {
+    width: 100%;
+    // height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    >div {
+        width: 157px;
+        height: 238px;
+        position: relative;
+        background-color: #EEE;
+        margin-bottom: 21px;
+        color: #FBFAF9;
+        padding-left: 14px;
+        box-sizing: border-box;
+        border-radius: 8px;
+        h2 {
+          font-size: 24px;
+          font-weight: 600;
+          margin: 27px 0 5px;
+        }
+        span {
+          font-size: 14px;
+          font-weight: 400;
+        }
+        image {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            bottom: 0;
+        }
+    }
+    .bor-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 157px;
+        height: 238px;
+        box-sizing: border-box;
+        border-radius: 8px 8px 8px 8px;
+        opacity: 1;
+        .new-week {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 88px;
+            height: 25px;
+            border-radius: 0px 0px 0px 8px;
+            font-size: 12px;
+        }
+    }
+    .modal-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 157px;
+        height: 238px;
+        background: #000000;
+        border-radius: 8px 8px 8px 8px;
+        opacity: 0.6;
+    }
+    .item1 {
+        background-color: #FF9A2E;
+    }
+    .item2 {
+        background-color: #FF664F;
+        .bor-box {
+            border: 5px solid #3F9BFF;
+            .new-week {
+                background: #3F9BFF;
+            }
+        }
+    }
+    .item3 {
+        background-color: #3F9BFF;
+        .bor-box {
+            border: 5px solid #FFC722;
+            .new-week {
+                background: #FFC722;
+            }
+        }
+    }
+    .item4 {
+        background-color: #1FBE8E;
+        .bor-box {
+            border: 5px solid #5D5FEF;
+            .new-week {
+                background: #5D5FEF;
+            }
+        }
+    }
+}
