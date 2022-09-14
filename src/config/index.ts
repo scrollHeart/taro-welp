@@ -1,6 +1,6 @@
 export default {
   baseUrl: {
-    dev: 'https://yapi.baidu-int.com/mock/15588/',
+    dev: 'http://123.56.236.117:9000/',
     pro: 'xxx'
   },
   publicPath: [/^\/public/, /^\/login/]

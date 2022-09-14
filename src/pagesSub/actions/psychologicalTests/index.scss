@@ -1,0 +1,109 @@
+main {
+    padding: 0 20px;
+    h2 {
+        font-size: 22px;
+        font-weight: 400;
+        color: #1D2129;
+        margin: 26px 0 10px;
+    }
+    p {
+        color: #86909C;
+        line-height: 28px;
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+.graph {
+    &::before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: #ccc;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: 1;
+    }
+    &::after {
+        content: '';
+        width: 1px;
+        height: 100%;
+        background-color: #ccc;
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        z-index: 1;
+    }
+    width: 290px;
+    height: 290px;
+    border: 1px dashed #ccc;
+    margin: 42px 22px;
+    box-sizing: border-box;
+    position: relative;
+    .shadow-box {
+        width: 202px;
+        height: 202px;
+        background-color: #F5F4F5;
+        transform: rotate(-45deg);
+        position: absolute;
+        left: 42px;
+        top: 42px;
+    }
+    b {
+        position: relative;
+        top: 6px;
+        margin-right: 20px;
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #F44165;
+            position: absolute;
+        }
+        &::after {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            left: 3px;
+            top: 1px;
+            z-index: 1;
+        }
+    }
+    .blue-point {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        b::before {
+            background-color: #0496FF;
+        }
+    }
+    .dark-point {
+        position: absolute;
+        top: 30px;
+        left: 200px;
+        b::before {
+            background-color: #6665DD;
+        }
+    }
+    .green-point {
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        b::before {
+            background-color: #7ED321;
+        }
+    }
+    .red-point {
+        position: absolute;
+        bottom: 30px;
+        left: 200px;
+    }
+}

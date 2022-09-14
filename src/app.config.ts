@@ -1,9 +1,17 @@
 export default defineAppConfig({
-  pages: ['pages/home/index', 'pages/action/index', 'pages/datas/index', 'pages/course/index'],
+  pages: [ 'pages/loginGuide/index', 'pages/home/index', 'pages/action/index', 'pages/datas/index', 'pages/course/index'],
   subpackages: [
     {
       root: 'pagesSub/my',
       pages: ['index']
+    },
+    {
+      root: 'pagesSub/actions/psychologicalTests',
+      pages: ['index','topic', 'grogressGauge', 'remind', 'preliminaryEvaluation', 'done']
+    },
+    {
+      root: 'pagesSub/actions/anxietyDiary',
+      pages: ['index',]
     }
   ],
   window: {

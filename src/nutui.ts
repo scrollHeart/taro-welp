@@ -1,4 +1,4 @@
-import { Icon, Button, Navbar, Avatar } from '@nutui/nutui-taro'
+import { Icon, Button, Navbar, Avatar, Progress, Cell, CellGroup, Radio, RadioGroup, Range, TextArea } from '@nutui/nutui-taro'
 import { App } from 'vue'
 const setNutUi = (app: App) => {
   app
@@ -6,5 +6,12 @@ const setNutUi = (app: App) => {
     .use(Button)
     .use(Navbar)
     .use(Avatar)
+    .use(Progress)
+    .use(Cell)
+    .use(CellGroup)
+    .use(Radio)
+    .use(RadioGroup)
+    .use(Range)
+    .use(TextArea)
 }
 export default setNutUi

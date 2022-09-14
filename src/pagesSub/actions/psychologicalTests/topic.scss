@@ -1,0 +1,62 @@
+.topic-wrap {
+    .nut-radiogroup {
+        width: 100%;
+    }
+    .nut-radio {
+        height: 60px;
+        border-bottom: 1px solid #eee;
+    }
+    .nut-button--large {
+        width: 285px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 16px;
+        border-width: 2px;
+        margin-bottom: 60px;
+        &:active {
+            background-color: #5D5FEF;
+            color: #fff;
+        }
+    }
+    .nut-radio__label {
+        margin-left: -15px;
+        font-size: 16px;
+        color: #1D2129;
+    }
+    .nut-radio__icon,
+    .nut-radio__icon--unchecked {
+        left: 93%;
+    }
+    .nut-cell-group__warp,
+    .nut-cell {
+        background-color: transparent;
+    }
+    .nut-range {
+        height: 30px;
+        border-radius: 0;
+        background-color: #DEDDFF;
+    }
+    h3 {
+        margin-top: 70px;
+        font-weight: 400;
+        color: #1D2129;
+        line-height: 22px;
+        font-size: 22px;
+        text-align: center;
+    }
+    .promit {
+        font-size: 14px;
+        color: #86909C;
+        margin-top: 12px;
+        text-align: center;
+    }
+    section {
+        margin: 0 24px;
+    }
+    .topic-type-box {
+        width: 100%;
+        min-height: 300px;
+        margin: 60px 0;
+    }
+}

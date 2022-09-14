@@ -1,6 +1,11 @@
 <template>
   <div class="status-bar" :style="{height: `${statusBarHeight}px`}"></div>
-    <nut-navbar :left-show="leftShow" :title="title" :style="{height: titleBarHeight + 'px'}">
+    <nut-navbar
+      :left-show="leftShow"
+      :title="title"
+      :style="{height: titleBarHeight + 'px'}"
+      @on-click-back="goPathHandle"
+      >
       <template #left v-if="!leftShow">
         <nut-icon name="my2" color="#5d5fef" @click="goPathHandle"></nut-icon>
       </template>

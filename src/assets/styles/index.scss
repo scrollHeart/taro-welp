@@ -12,4 +12,38 @@
     height: 100%;
     background-color: #FBFAF9;
     box-sizing: border-box;
+   //  font-family: PingFang SC-Regular, PingFang SC;
  }
+// 大号按钮样式修改
+ .nut-button--large {
+   width: 285px;
+   position: relative;
+   left: 50%;
+   transform: translateX(-50%);
+   font-size: 16px;
+   border-width: 2px;
+   margin-bottom: 60px;
+   &:active {
+       background-color: #5D5FEF;
+       color: #fff;
+   }
+}
+// 进度条样式修改
+.nut-progress .nut-progress-outer {
+   background-color: #C8C8C8;
+}
+.nut-progress .nut-progress-outer.nut-progress-base {
+   height: 4px!important;
+}
+// h3标题样式
+h3 {
+   font-size: 22px;
+   font-weight: 400;
+   color: #1D2129;
+}
+p {
+   font-size: 14px;
+   font-weight: 400;
+   color: #86909C;
+   line-height: 22px;
+}

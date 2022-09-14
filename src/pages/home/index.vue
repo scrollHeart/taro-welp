@@ -1,7 +1,7 @@
 <template>
   <TopNav
-    :leftShow="leftShow"
-    :title="title"
+    :leftShow="false"
+    title="WELP"
     @go-path-handle="goPathHandle"
   ></TopNav>
   <div class="bg-linear"></div>
@@ -39,26 +39,21 @@
     <ul>
       <li>
         <image style="width: 44px; height: 44px;" src="@/assets/icons/icon_home_1@2x.png"></image>
-        <!-- <div class="iconfont icon-jurassic_pie-chart" style="width: 50px; height: 50px; font-size: 40px; color: #deddff;"></div> -->
         <div class="num">12</div>
         <div class="txt">心理测评</div>
       </li>
       <li>
         <image style="width: 44px; height: 44px;" src="@/assets/icons/icon_home_2@2x.png"></image>
-        <!-- <div class="iconfont icon-lingxing" style="width: 50px; height: 50px; font-size: 40px; color: #deddff;"></div>
-        <div class="iconfont icon-lingxing" style="width: 50px; height: 30px; margin-top: -40px; font-size: 40px; color: #deddff;"></div> -->
         <div class="num">23</div>
         <div class="txt">焦虑日记</div>
       </li>
       <li>
         <image style="width: 44px; height: 44px;" src="@/assets/icons/icon_home_3@2x.png"></image>
-        <!-- <div class="iconfont icon-xuexibiji" style="width: 50px; height: 50px; font-size: 40px; color: #deddff;"></div> -->
         <div class="num">23</div>
         <div class="txt">现实检验</div>
       </li>
       <li>
         <image style="width: 44px; height: 44px;" src="@/assets/icons/icon_home_4@2x.png"></image>
-        <!-- <div class="iconfont icon-paichudingcengtuxing" style="width: 50px; height: 50px; font-size: 40px; color: #deddff;"></div> -->
         <div class="num">23</div>
         <div class="txt">课程学习</div>
       </li>
@@ -84,7 +79,7 @@ import { EChart } from "echarts4taro3"
 import TopNav from '@/components/topNav.vue'
 
 import './index.scss'
-import '@/assets/styles/navBar.scss'
+
 
 import homeImg3 from '@/assets/images/home/img_home_3@2x.png'
 import homeImg4 from '@/assets/images/home/img_home_4@2x.png'
@@ -97,12 +92,6 @@ import homeBg from '@/assets/images/home/img_home_7@2x.png'
 const goPathHandle = () => {
   Taro.navigateTo({ url: '/pagesSub/my/index' })
 }
-// 导航返回箭头
-const leftShow:Ref<boolean> = ref(false)
-leftShow.value = false
-// 导航标题
-const title:Ref<string> = ref('')
-title.value = 'WELP'
 /* 头部导航 end */
 
 // 课程提醒
