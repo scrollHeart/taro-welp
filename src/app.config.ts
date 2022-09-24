@@ -11,7 +11,11 @@ export default defineAppConfig({
     },
     {
       root: 'pagesSub/actions/anxietyDiary',
-      pages: ['index',]
+      pages: ['index', 'history', 'realityCheck/index', 'detail']
+    },
+    {
+      root: 'pagesSub/guides',
+      pages: ['index', 'userInfo']
     }
   ],
   window: {

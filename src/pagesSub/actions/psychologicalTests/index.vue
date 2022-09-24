@@ -51,7 +51,12 @@ const _getPsychometricInfo = async () => {
     for (let j = 0; j < topicNameArr.length; j++) {
         for (let i = 0; i < psychometricInfo.value.length; i++) {
             if (psychometricInfo.value[i].topicName === topicNameArr[j]) {
-                psychometricIdArr.value.push(psychometricInfo.value[i].id)
+                psychometricIdArr.value.push(
+                    {
+                        id: psychometricInfo.value[i].id,
+                        topicName: psychometricInfo.value[i].topicName
+                    }
+                )
             }
         }
     }

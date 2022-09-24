@@ -4,7 +4,7 @@
     @go-path-handle="goPathHandle"
   ></TopNav>
     <div class="bg-linear"></div>
-    <main>
+    <main class="done-wrap">
         <view class="radar-chart">
             <e-chart ref="vueref0" canvas-id="bar-canvas" />
         </view>
@@ -19,7 +19,14 @@ import { ref,reactive, onMounted, Ref } from 'vue'
 import Taro from '@tarojs/taro'
 import { EChart } from "echarts4taro3"
 import TopNav from '@/components/topNav.vue'
+import { pracResult } from '@/services/apis/action'
 
+// 初始化心理测评数组
+const scoreData = ref([])
+// 初始化数据顺序
+const orderArr = [14, 12, 13, 11]
+// 定义echarts图表dom
+const vueref0 = ref(null)
 const goPathHandle = () => {
     console.log('goPathHandle')
 }
@@ -27,9 +34,17 @@ const goNextHandle = () => {
   // 跳到首页
     Taro.redirectTo({url: '/pages/home/index'})
 }
-// 定义echarts图表dom
-const vueref0 = ref(null)
-onMounted(() => {
+// 获取雷达图数据
+const _pracResult = async() => {
+  const {code, data} = await pracResult()
+  orderArr.forEach(item => {
+    data.forEach(s => {
+      if (item === s.id) {
+        scoreData.value.push(s.score)
+      }
+    })
+  })
+  console.log(scoreData.value, '--------------data')
   let option = {
     tooltip: {
       trigger: 'axis'
@@ -83,7 +98,7 @@ onMounted(() => {
         },
         data: [
           {
-            value: [60, 73, 85, 40],
+            value: scoreData.value,
             name: '雷达图'
           }
         ]
@@ -100,20 +115,29 @@ onMounted(() => {
       }, 2000)
     }, 200)
   })
+}
+
+onMounted(() => {
+  // 获取雷达图数据
+  _pracResult()
 })
 </script>
 <style lang="scss">
-    p {
-        width: 311px;
-        height: 128px;
-        font-size: 16px;
-        font-family: PingFang SC-Regular, PingFang SC;
-        font-weight: 400;
-        color: #86909C;
-        line-height: 32px;
-    }
-    .radar-chart {
-        width: 100%;
-        height: 318px;
-    }
+.done-wrap {
+  padding: 0 20px;
+  p {
+      width: 311px;
+      height: 128px;
+      font-size: 16px;
+      font-family: PingFang SC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #86909C;
+      line-height: 22px;
+      margin-top: 30px;
+  }
+  .radar-chart {
+      width: 100%;
+      height: 318px;
+  }
+}
 </style>

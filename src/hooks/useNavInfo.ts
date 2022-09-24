@@ -74,6 +74,5 @@ interface INavInfo {
     //   navInfo.screenHeight = screenHeight
     //   navInfo.windowHeight = windowHeight
     Object.assign(navInfo,setNavInfo)
-    console.log(navInfo, 'navInfo----------')
      return navInfo
  }

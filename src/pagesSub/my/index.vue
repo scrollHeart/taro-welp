@@ -1,10 +1,10 @@
 <template>
-  <main v-if="isLogin" class="my-container">
+  <!-- <main v-if="isLogin" class="my-container"> -->
     <user-info />
-  </main>
-  <main v-else>
+  <!-- </main> -->
+  <!-- <main v-else>
     <nut-button type="primary" @click="handleLogin">微信一键登录</nut-button>
-  </main>
+  </main> -->
 </template>
 <script lang="ts" setup>
 import Taro from '@tarojs/taro'

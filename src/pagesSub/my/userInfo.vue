@@ -10,6 +10,7 @@ import { computed } from 'vue'
 import { useStore } from '@/stores'
 
 const auth = useStore('auth')
+console.log(auth.userInfo, '------------')
 const userInfo = computed(() => auth.userInfo)
 
 </script>

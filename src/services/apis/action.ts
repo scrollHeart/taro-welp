@@ -12,3 +12,13 @@ export function getpsyAssQuestionList(subPsychometricId: number) {
 export function postPracticeCommit(params) {
   return request.post('businessModule/app/practiceCommit', params)
 }
+// 获取心理测评雷达图
+export function pracResult() {
+  return request.get('businessModule/app/pracResult')
+}
+
+// 获取焦虑日志题信息
+export function getAnxietyLogList() {
+  return request.get('businessModule/app/anxietyLogList')
+}
+

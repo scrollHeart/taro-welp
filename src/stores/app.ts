@@ -3,7 +3,8 @@ import { defineStore } from 'pinia'
 const useApp = defineStore({
   id: 'app',
   state: () => ({
-    screenLoading: false
+    screenLoading: false,
+    userInfoBool: false, // 信息补全是否完成
   }),
   actions: {
     startScreenLoading() {
@@ -11,6 +12,9 @@ const useApp = defineStore({
     },
     cancelScreenLoading() {
       this.screenLoading = false
+    },
+    setuserInfoBool(userInfoBool: boolean) {
+      this.userInfoBool = userInfoBool
     }
   }
 })

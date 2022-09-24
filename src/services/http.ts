@@ -72,6 +72,12 @@ class HttpRequest {
         const key = res.config.url + '&' + res.config.method
         this.removePending(key)
         if (res.status === 200) {
+          // token过期,跳转到登录页
+          if (res.data.code === 501) {
+            Taro.navigateTo({
+              url: '/pages/loginGuide/index'
+            })
+          }
           return Promise.resolve(res.data)
         } else {
           return Promise.reject(res)

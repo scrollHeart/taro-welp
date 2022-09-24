@@ -1,11 +1,11 @@
 <template>
   <TopNav
-    title="WELP"
+    :title="navTitle"
     @go-path-handle="goPathHandle"
   ></TopNav>
     <div class="bg-linear"></div>
     <main class="topic-wrap">
-        <nut-progress percentage="50" :show-text="false" stroke-height="24" />
+        <nut-progress :percentage="percentageVaule" :show-text="false" />
         <section>
             <h3>{{ topicMSg }}</h3>
             <span class="promit">请根据您在过去一周（包括今天）的感受评分。</span>
@@ -41,8 +41,11 @@ import './topic.scss'
 const psychometricIdArr = JSON.parse(Taro.getStorageSync('psychometricIdArr'))
 // 初始化套题请求参数
 const curSubPsychometricId:Ref<number> = ref(-1)
-curSubPsychometricId.value = Taro.getStorageSync('curSubPsychometricId') ? Number(Taro.getStorageSync('curSubPsychometricId')) : psychometricIdArr[0]
-
+curSubPsychometricId.value = Taro.getStorageSync('curSubPsychometricId') ? Number(Taro.getStorageSync('curSubPsychometricId')) : psychometricIdArr[0].id
+// 初始化标题文字
+const navTitle:Ref<string> = ref('');
+// 初始化进度条数值
+const percentageVaule:Ref<number> = ref(0)
 onMounted(() => {
     // 调用-获取心理测评-各分类题信息
   _getpsyAssQuestionList()
@@ -55,6 +58,16 @@ const goPathHandle = () => {
     })
 }
 
+const mockData = {
+        "msg": "操作成功",
+        "code": 200,
+        "data": {
+            "result": "可能有中度忧郁症 (最好咨询心理医生或心理医学工作者)",
+            "score": 10,
+            "scoreTotal": 27,
+            "status": 0
+        }
+    }
 // 设置心理测评信息
 const psychometricInfo = ref([])
 // 设置题目个数
@@ -62,9 +75,14 @@ const psychometricLen:Ref<number> = ref(0)
 // 获取心理测评-各分类题信息数据
 const _getpsyAssQuestionList = async () => {
     const res = await getpsyAssQuestionList(curSubPsychometricId.value)
+    psychometricIdArr.forEach(item => {
+        if (item.id === curSubPsychometricId.value) {
+            navTitle.value = item.topicName
+        }
+    })
+
     psychometricInfo.value = res
     psychometricLen.value = psychometricInfo.value.length
-    console.log(psychometricLen.value, 'psychometricLen.value--------------------')
     // 渲染当前题目信息
     renderQuestionFn()
 }
@@ -75,7 +93,25 @@ const _postPracticeCommit = async (arr) => {
         practiceId: curSubPsychometricId.value,
         practiceInfo: arr
     }
-    const res = await postPracticeCommit(params)
+    try {
+        const {code, data, msg} = await postPracticeCommit(params)
+        // const {code, data, msg} = mockData
+        if (code === 200) {
+            // 1.正常结果, 跳转到仪表展示结果页 2.不正常结果，跳转到提示就医页
+            if (data.status !== 1) {
+                Taro.navigateTo({url: `/pagesSub/actions/psychologicalTests/grogressGauge?data=${JSON.stringify(data)}`})
+            } else {
+                Taro.navigateTo({url: '/pagesSub/actions/psychologicalTests/remind'})
+            }
+        } else {
+            console.log(msg)
+        }
+    }
+    catch (error) {
+        console.error(error)
+    }
+
+
 }
 // 初始化指引文字
 const guideText:Ref<string> = ref('下一题')
@@ -98,6 +134,8 @@ const curIndex:Ref<number> = ref(0)
 const renderQuestionFn = () => {
     // 获取当前题目信息
     curQuestionInfo.value = psychometricInfo.value[curIndex.value]
+    // 获取进度条数值
+    percentageVaule.value = (curIndex.value * 100 / psychometricLen.value).toFixed(2)
     // 清除上题选项结果
     radioVal.value = -1
     // 更新当前题目类型
@@ -139,29 +177,19 @@ const goNextQuestionHandle = () => {
             // 渲染当前题目信息
             renderQuestionFn()
         } else {
+            percentageVaule.value = 100
             // 下一节、完成
-            let num = psychometricIdArr.indexOf(curSubPsychometricId.value)
+            let num = -1;
+            psychometricIdArr.forEach((item, index) => {
+                if (item.id === curSubPsychometricId.value) {
+                    num = index
+                }
+            })
+            // 提交上套题记录
+            _postPracticeCommit(practiceInfo.value)
             if ((num + 1) < psychometricIdArr.length) {
-                // 提交上套题记录
-                _postPracticeCommit(practiceInfo.value)
                 // 当前题号归零
                 curIndex.value = 0
-                // 上套题目的答题记录清空
-                // practiceInfo.value = []
-                // console.log('跳转到下一节')
-                curSubPsychometricId.value =  psychometricIdArr[num + 1]
-
-                Taro.setStorageSync('curSubPsychometricId', curSubPsychometricId.value)
-                // 跳转到展示结果页面
-                Taro.redirectTo({url: '/pagesSub/actions/psychologicalTests/grogressGauge'})
-            } else {
-                // 提交上套题记录
-                _postPracticeCommit(practiceInfo.value)
-                Taro.setStorageSync('curSubPsychometricId', null)
-                Taro.setStorageSync('psychometricIdArr', null)
-                console.log('已完成')
-                // 跳转到初筛完成页面
-                Taro.redirectTo({url: '/pagesSub/actions/psychologicalTests/preliminaryEvaluation'})
             }
         }
     }

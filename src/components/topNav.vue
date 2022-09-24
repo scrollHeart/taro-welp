@@ -25,7 +25,6 @@ import { useNavInfo } from '@/hooks/useNavInfo'
 
 import '@/assets/styles/navBar.scss'
 
-console.log(props.leftShow, 'leftShow----nav')
 const {statusBarHeight, titleBarHeight} = useNavInfo()
 const goPathHandle = () => {
   emit('goPathHandle')
