@@ -1,0 +1,76 @@
+.tab-bar {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border-top: 1px solid #E5E6EB;
+    box-shadow: 0 -2px 3px 3px #f0f0f0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 10px;
+        text-align: center;
+        color: #86909C;
+    }
+    i {
+        display: block;
+        margin-bottom: 2px;
+    }
+    i.home_icon {
+        width: 26px;
+        height: 23px;
+        background: url('./icons/home_icon.png') no-repeat center center;
+        background-size: 100%;
+    }
+    i.action_icon {
+        width: 24px;
+        height: 24px;
+        background: url('./icons/pencil_icon.png') no-repeat center center;
+        background-size: 100%;
+    }
+    i.data_icon {
+        width: 27px;
+        height: 24px;
+        background: url('./icons/bar_icon.png') no-repeat center center;
+        background-size: 100%;
+    }
+    i.course_icon {
+        width: 21px;
+        height: 25px;
+        background: url('./icons/learn_icon.png') no-repeat center center;
+        background-size: 100%;
+    }
+    .active {
+        color: #5D5FEF;
+        i.home_icon {
+            background: url('./icons/home_icon_highlighted.png') no-repeat center center;
+            background-size: 100%;
+        }
+        i.action_icon {
+            background: url('./icons/pencil_icon_highlighted.png') no-repeat center center;
+            background-size: 100%;
+        }
+        i.data_icon {
+            background: url('./icons/bar_icon_highlighted.png') no-repeat center center;
+            background-size: 100%;
+        }
+        i.course_icon {
+            background: url('./icons/learn_icon_highlighted.png') no-repeat center center;
+            background-size: 100%;
+        }
+    }
+}
+.index-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.layout-wrap {
+    overflow: auto;
+}

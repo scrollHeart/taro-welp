@@ -4,6 +4,7 @@ module.exports = {
   },
   defineConstants: {
   },
-  mini: {},
+  mini: {
+  },
   h5: {}
 }

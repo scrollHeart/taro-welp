@@ -9,3 +9,12 @@ export function getCurUserStage() {
 export function getHomePsychometricInfo() {
     return request.post('businessModule/homePage/info')
   }
+  // 补全用户信息
+  export function updateUserInfo(params) {
+    return request.post('businessModule/user/update', params)
+  }
+
+  // 用户信息回显
+  export function getUserDetail() {
+    return request.post('businessModule/user/detail')
+  }

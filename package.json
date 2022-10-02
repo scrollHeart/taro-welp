@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build:weapp": "taro build --type weapp",
+    "dev:wxapp": "taro build --type weapp --watch --env production",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
     "build:tt": "taro build --type tt",

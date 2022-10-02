@@ -13,7 +13,8 @@ interface INavInfo {
     capsuleLeft: number
     contentHeight: number
     screenHeight: number
-    windowHeight: number
+    tabBarHeight: number
+    mainHeight: number
   }
  export function useNavInfo() {
 
@@ -28,9 +29,13 @@ interface INavInfo {
         capsuleLeft: 0,
         contentHeight: 0,
         screenHeight: 0,
-        windowHeight: 0,
+        tabBarHeight: 0,
+        mainHeight: 0
     })
-     const { statusBarHeight, screenWidth, screenHeight, windowHeight } = Taro.getSystemInfoSync()
+     const { statusBarHeight, screenWidth, screenHeight } = Taro.getSystemInfoSync()
+
+     // px转换到rpx的比例
+     const pxToRpxScale = screenHeight / screenWidth
      // 获取胶囊信息
      const { width, height, left, top, right } = Taro.getMenuButtonBoundingClientRect()
      // 计算标题栏高度
@@ -45,34 +50,25 @@ interface INavInfo {
      const titleRightWidth = width + marginSides * 3
      //去掉导航栏，屏幕剩余的高度
      const contentHeight = screenHeight - appHeaderHeight
-
-     const setNavInfo = {
-        statusBarHeight,
-        titleBarHeight,
-        titelBarWidth,
-        titleRightWidth,
-        appHeaderHeight,
-        marginSides,
-        capsuleWidth: width,
-        capsuleHeight: height,
-        capsuleLeft: left,
-        contentHeight,
-        screenHeight,
-        windowHeight
+    // 底部tabBar高度
+    const tabBarHeight = Math.floor(pxToRpxScale * (82/(812/375)))
+    // 主页面高度
+    const mainHeight = screenHeight - appHeaderHeight - tabBarHeight
+    const setNavInfo = {
+        statusBarHeight, // 状态栏高度
+        titleBarHeight, // 标题栏高度
+        titelBarWidth, // 标题栏宽度
+        titleRightWidth, // 胶囊和右边距宽度
+        appHeaderHeight, // 计算导航栏高度
+        marginSides, // 侧边距
+        capsuleWidth: width, // 胶囊宽度
+        capsuleHeight: height, // 胶囊高度
+        capsuleLeft: left, // 胶囊距左边距离
+        contentHeight, // 去掉导航栏，屏幕剩余的高度
+        screenHeight, // 屏幕高度
+        tabBarHeight, // 底部导航栏高度
+        mainHeight, // 主页面高度
      }
-
-    //   navInfo.statusBarHeight = statusBarHeight //状态栏高度
-    //   navInfo.titleBarHeight = titleBarHeight  //标题栏高度
-    //   navInfo.titelBarWidth = titelBarWidth  //标题栏宽度
-    //   navInfo.titleRightWidth = titleRightWidth  //标题栏宽度
-    //   navInfo.appHeaderHeight = appHeaderHeight //整个导航栏高度
-    //   navInfo.marginSides = marginSides //侧边距
-    //   navInfo.capsuleWidth = width //胶囊宽度
-    //   navInfo.capsuleHeight = height //胶囊高度
-    //   navInfo.capsuleLeft = left
-    //   navInfo.contentHeight = contentHeight
-    //   navInfo.screenHeight = screenHeight
-    //   navInfo.windowHeight = windowHeight
     Object.assign(navInfo,setNavInfo)
      return navInfo
  }

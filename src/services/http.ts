@@ -51,7 +51,7 @@ class HttpRequest {
         })
         const token = Taro.getStorageSync('token')
         if (!isPublic && token) {
-          config.headers.Authorization = 'Bearer ' + token
+          config.headers.Authorization = token
         }
         const key = config.url + '&' + config.method
         this.removePending(key, true)
